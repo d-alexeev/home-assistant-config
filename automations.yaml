@@ -1,0 +1,28 @@
+- alias: 'HomeKit Delayed Start'
+  initial_state: true
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:01
+    - service: homekit.start
+    
+- alias: 'Включить свет в коридоре при обнаружении движения'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_242d6604_ias_zone
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.ewelink_sa_003_zigbee_8861521f_on_off
+
+- alias: 'Выключить свет в коридоре при отсутствии движения'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_242d6604_ias_zone
+    to: 'off'
+    #for:
+    #  seconds: 1
+  action:
+    service: switch.turn_off
+    entity_id: switch.ewelink_sa_003_zigbee_8861521f_on_off

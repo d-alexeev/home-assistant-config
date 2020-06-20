@@ -1,0 +1,30 @@
+*.log
+
+!*.yaml
+!.gitignore
+!*.md
+
+## Ignore folders.
+.storage
+.cloud
+.google.token
+
+## Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+known_devices.yaml
+secrets.yaml
+
+## Others
+._includes
+.homekit.state
+.spotify-token-cache
+.vscode/
+appdaemon/compiled
+appdaemon/dashboards/
+home-assistant_v2.db
+zigbee.db
+tts/
+webostv.conf
+notebooks/
+airsonos.xml
+
