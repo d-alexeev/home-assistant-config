@@ -1,11 +1,11 @@
-- name: Home
+- name: Дом
   latitude: !secret latitude_home
   longitude: !secret longitude_home
-  radius: 50
+  radius: 70
   icon: mdi:home
 
-- name: Work
+- name: Офис
   latitude: !secret latitude_work
   longitude: !secret longitude_work
-  radius: 300
+  radius: 150
   icon: mdi:work
