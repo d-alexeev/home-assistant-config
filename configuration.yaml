@@ -1,0 +1,38 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+
+mqtt:
+  broker: a0d7b954-mqtt
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  client_id: home-assistant
+  
+homekit:
+  autostart: false
+  
+recorder:
+  purge_interval: 1
+  purge_keep_days: 7
+  
+stream:
+camera:
+  - platform: generic
+    name: Example
+    still_image_url: https://www.home-assistant.io/images/default-social.png
+    stream_source: rtsp://flussonic.powernet.com.ru:554/user81415
+    
+discovery:
