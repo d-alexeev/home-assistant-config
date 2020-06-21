@@ -1,0 +1,27 @@
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+    entities:
+      - device_tracker.android_303f7f750bdb4881
+      - device_tracker.desktop_59bela8
+      - device_tracker.desktop_5r2nol9
+      - device_tracker.dmitrys_mbp
+      - device_tracker.honor_9x_a0fa04b2d215156f
+      - device_tracker.laptop_43un8jdk
+      - device_tracker.marantz_sr6013
+      - device_tracker.mi8_miphonealexeew
+      - device_tracker.mi_8
+      - device_tracker.mi9lite_miphone
+      - device_tracker.msk_c02xk4cjjhd2
+      - device_tracker.redminote8_redmi
+      - device_tracker.rockrobo
+  exclude:
+    domains:
+      - automation
+      - updater
+      - device_tracker
+    entities:
+     - sensor.last_boot
+     - sensor.date
