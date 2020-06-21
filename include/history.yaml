@@ -3,6 +3,8 @@
       - sensor
       - switch
       - media_player
+      - person
+      - sun
     entities:
       - device_tracker.android_303f7f750bdb4881
       - device_tracker.desktop_59bela8
@@ -21,7 +23,6 @@
     domains:
       - automation
       - updater
-      - device_tracker
     entities:
      - sensor.last_boot
      - sensor.date
