@@ -30,3 +30,4 @@ webostv.conf
 notebooks/
 airsonos.xml
 esphome/
+.shopping_list.json
