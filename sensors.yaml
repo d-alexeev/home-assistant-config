@@ -13,3 +13,12 @@
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
   value_template: '{{ (value | multiply(0.001)) | round(1) }}'
+  
+### Давление в мм ртутного столба
+- platform: template
+  sensors:
+    weather_master_bed_pressure_mm:
+      friendly_name: "Давление в спальне"
+      unit_of_measurement: 'mmHg'
+      value_template: "{{ (states('sensor.weather_master_bed_pressure')|float * 0.75 + 4)|round(1) }}"
+      device_class: pressure

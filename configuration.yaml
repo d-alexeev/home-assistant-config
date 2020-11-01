@@ -39,3 +39,7 @@ camera:
 #    name: Example
 #    still_image_url: https://www.home-assistant.io/images/default-social.png
 #    stream_source: rtsp://flussonic.powernet.com.ru:554/user81415
+media_player:
+  - platform: philips_js
+    host: 192.168.88.56
+    api_version: 5
