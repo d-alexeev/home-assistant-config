@@ -2,14 +2,16 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
-
+http:
+  ssl_certificate: ssl/fullchain.pem
+  ssl_key: ssl/privkey.pem
+  base_url: https://268d01731307.sn.mynetname.net:8123
+  
 #Others
 zone: !include include/zones.yaml
 discovery:
 history: !include include/history.yaml
+yandex_smart_home: !include yandex_smart_home.yaml
 
 # Text to speech
 tts:
