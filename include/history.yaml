@@ -1,0 +1,29 @@
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - person
+      - sun
+    entities:
+      - device_tracker.desktop_59bela8
+      - device_tracker.desktop_5r2nol9
+      - device_tracker.laptop_43un8jdk
+      - device_tracker.laptop_mbp_avito
+      - device_tracker.dmitrys_mbp
+      - device_tracker.android_303f7f750bdb4881
+      - device_tracker.phone_sofia_honor_9x
+      - device_tracker.phone_dima_mi8
+      - device_tracker.mi_8
+      - device_tracker.phone_ira_mi9lite
+      - device_tracker.phone_lya_redminote8
+      - device_tracker.marantz_sr6013
+      - device_tracker.rockrobo
+      - device_tracker.nintendo_switch
+  exclude:
+    domains:
+      - automation
+      - updater
+    entities:
+     - sensor.last_boot
+     - sensor.date

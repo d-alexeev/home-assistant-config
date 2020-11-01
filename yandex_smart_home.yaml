@@ -1,0 +1,13 @@
+filter:
+  exclude_entities:
+    - binary_sensor.mi_8_is_charging
+    - switch.lumi_lumi_ctrl_neutral1_116d2404_on_off_2
+    - scene.1pv40icxb1sqzaiz #кондей через ИК
+    - scene.w5qnxlnkxciwwah4 #вкл/выкл ТВ через ИК
+    - scene.jxk1zd3qgogckosn #включить ТВ через ИК
+
+entity_config:
+  light.yeelight_lamp:
+    room: "Спальня"
+  switch.lumi_lumi_plug_131d5303_on_off:
+    room: "Спальня"

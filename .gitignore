@@ -9,6 +9,7 @@
 .cloud
 .google.token
 .c9
+ssl
 
 ## Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
@@ -22,7 +23,7 @@ secrets.yaml
 .vscode/
 appdaemon/compiled
 appdaemon/dashboards/
-home-assistant_v2.db
+home-assistant_v2.db*
 zigbee.db
 tts/
 node-red/
@@ -30,3 +31,4 @@ webostv.conf
 notebooks/
 airsonos.xml
 esphome/
+.shopping_list.json

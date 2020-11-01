@@ -1,28 +1,112 @@
-- alias: 'HomeKit Delayed Start'
+- alias: HomeKit Delayed Start
   initial_state: true
   trigger:
-    - platform: homeassistant
-      event: start
+  - platform: homeassistant
+    event: start
   action:
-    - delay: 00:01
-    - service: homekit.start
-    
-- alias: 'Включить свет в коридоре при обнаружении движения'
+  - delay: 00:01
+  - service: homekit.start
+  id: 7c79eff6711248548cbfaf950c0e83e0
+- id: 898d54f60a084121b470f872a7a720c6
+  alias: Включить свет в коридоре при обнаружении движения
   trigger:
-    platform: state
+  - platform: state
     entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_242d6604_ias_zone
     to: 'on'
   action:
-    service: switch.turn_on
-    entity_id: switch.ewelink_sa_003_zigbee_8861521f_on_off
-
-- alias: 'Выключить свет в коридоре при отсутствии движения'
+  - service: switch.turn_on
+    entity_id: switch.lumi_lumi_ctrl_neutral1_on_off
+  mode: single
+- id: 06a85d28c96e4c219c30952ce89c2e35
+  alias: Выключить свет в коридоре при отсутствии движения
   trigger:
-    platform: state
+  - platform: state
     entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_242d6604_ias_zone
     to: 'off'
-    #for:
-    #  seconds: 1
   action:
-    service: switch.turn_off
-    entity_id: switch.ewelink_sa_003_zigbee_8861521f_on_off
+  - service: switch.turn_off
+    entity_id: switch.lumi_lumi_ctrl_neutral1_on_off
+  mode: single
+- id: '1598390746583'
+  alias: Включить зарядное Galaxy S4
+  description: При достижении 20% заряда
+  trigger:
+  - below: 21
+    device_id: b9efc918863c43c69cdd2762fff7053e
+    domain: sensor
+    entity_id: sensor.gt_i9505_battery_level
+    platform: device
+    type: battery_level
+  condition: []
+  action:
+  - device_id: 72890c7dbd5e4ba5bdc30f9684750ec3
+    domain: switch
+    entity_id: switch.lumi_lumi_plug_131d5303_on_off
+    type: turn_on
+- id: '1598390917362'
+  alias: Выключить зарядное Galaxy S4
+  description: ''
+  trigger:
+  - above: 85
+    device_id: b9efc918863c43c69cdd2762fff7053e
+    domain: sensor
+    entity_id: sensor.gt_i9505_battery_level
+    platform: device
+    type: battery_level
+  condition: []
+  action:
+  - device_id: 72890c7dbd5e4ba5bdc30f9684750ec3
+    domain: switch
+    entity_id: switch.lumi_lumi_plug_131d5303_on_off
+    type: turn_off
+- id: '1604244294330'
+  alias: Включить Алису на ТВ кубом
+  description: Включает ТВ и переключает ресивер на Алису
+  trigger:
+  - device_id: 55bc32fb412c40bf9ebde3c1cb1bf098
+    domain: zha
+    platform: device
+    type: device_shaken
+    subtype: turn_on
+  condition: []
+  action:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.marantz_sr6013_2
+      source: ALICE
+  - scene: scene.jxk1zd3qgogckosn
+  mode: single
+- id: '1604248997158'
+  alias: Выключить ТВ
+  description: Проверяет, включен ли ТВ, и нажимает кнопку вкл, если да
+  trigger:
+  - device_id: 55bc32fb412c40bf9ebde3c1cb1bf098
+    domain: zha
+    platform: device
+    type: device_knocked
+    subtype: face_any
+  condition:
+  - condition: state
+    entity_id: media_player.philips_tv
+    state: 'on'
+  action:
+  - scene: scene.w5qnxlnkxciwwah4
+  mode: single
+- id: '1604252214282'
+  alias: 'Marantz SR6013: громче'
+  description: ''
+  trigger:
+  - device_id: 55bc32fb412c40bf9ebde3c1cb1bf098
+    domain: zha
+    platform: device
+    type: device_rotated
+    subtype: right
+  condition:
+  - condition: state
+    entity_id: media_player.marantz_sr6013_2
+    state: 'on'
+  action:
+  - service: media_player.volume_up
+    data: {}
+    entity_id: media_player.marantz_sr6013_2
+  mode: single
